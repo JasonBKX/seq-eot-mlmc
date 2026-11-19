@@ -1,5 +1,7 @@
 # Sequential entropic optimal transport for multilevel Monte Carlo
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24361732.svg)](https://doi.org/10.5281/zenodo.24361732)
+
 Code and saved results for
 
 > J. Beh, P. Del Moral, A. Jasra. *Sequential entropic optimal transport for Bayesian inverse
@@ -120,6 +122,14 @@ configuration files.
 - `fem_solves_by_level` and `fem_element_work`.
 
 `metadata.json` records the full configuration, the observed data and the software versions.
+
+## How to cite
+
+Please cite the paper and, for the code, the Zenodo archive:
+
+> J. Beh, P. Del Moral, A. Jasra. Code for "Sequential entropic optimal transport for Bayesian
+> inverse problems via multilevel Monte Carlo" [software], Zenodo, 2026.
+> https://doi.org/10.5281/zenodo.24361732
 
 ## License
 
