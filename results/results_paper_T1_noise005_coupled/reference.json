@@ -1,0 +1,76 @@
+{
+  "target": {
+    "dimension": 50,
+    "y": [
+      27.268814327340618,
+      40.64292574637488
+    ],
+    "noise_sd": 0.05,
+    "coefficient": "0.15 + sum_j 0.4*4^(-j)*u_j*b_j(x)",
+    "posterior_reference": "continuum quadrature likelihood",
+    "observable": "same continuum-quadrature p(0.5;u) at every level",
+    "quadrature_order_per_quarter": 64
+  },
+  "target_hash": "6d05c05b77fd4fdc554eb6cc6e87c2fa3ad53b0797c34e5c4e20023d817789b2",
+  "mode": "is",
+  "se": 0.00010147544135851323,
+  "quadrature_change": null,
+  "value": 50.333352594751915,
+  "batch_se": 0.00013212118872587148,
+  "ess": 16939363.32710819,
+  "ess_fraction": 0.08469681663554095,
+  "samples": 200000000,
+  "max_single_weight_share": 1.615068532536082e-05,
+  "batch_estimates": [
+    50.333284441669456,
+    50.33339827912306,
+    50.33394704812197,
+    50.332466979116866,
+    50.33317496136765,
+    50.33457083350465,
+    50.33369338601093,
+    50.332680676223085,
+    50.334352268821036,
+    50.33334288636286,
+    50.33398809919278,
+    50.33364826804373,
+    50.33290128919673,
+    50.33361570118861,
+    50.33362900352455,
+    50.33343179440313,
+    50.332805549840344,
+    50.332683196136934,
+    50.33280792772982,
+    50.332634772696174
+  ],
+  "proposal": {
+    "informed_dims": 4,
+    "df": 5,
+    "inflation": 1.2,
+    "defensive": 0.05,
+    "pilot_size": 5000,
+    "pilot": {
+      "proposals": 37543936,
+      "accepted_before_truncation": 5002,
+      "acceptance_rate": 0.0001332305701778311
+    },
+    "pilot_mean_informed": [
+      -0.6402091540351603,
+      0.5768038042898633,
+      -0.020894300542507467,
+      -0.006709671835286641
+    ],
+    "pilot_sd_over_prior_sd_first8": [
+      0.01743974693396209,
+      0.2663307085381142,
+      1.0107242414258553,
+      1.0205326885466677,
+      1.0121511193424308,
+      0.9754247566591141,
+      1.0032661959047198,
+      0.9978478309479433
+    ]
+  },
+  "note": "Self-normalised IS, bounded weights (<= 1/defensive); SE by delta method, batch_se from independent sub-runs as a cross-check.",
+  "seconds": 333.2522144159884
+}

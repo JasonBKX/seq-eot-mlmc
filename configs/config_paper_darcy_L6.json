@@ -1,0 +1,113 @@
+{
+  "dimension": 25,
+  "data_seed": 2026,
+  "run_seed": 12345,
+  "repeats": 30,
+  "threads": 1,
+  "methods": [
+    "LightSB",
+    "TransportMH",
+    "MLSMC_pCN"
+  ],
+  "solver": "banded",
+  "light": {
+    "iterations": 1000,
+    "batch_size": 1024,
+    "K": 4,
+    "epsilon": 0.05,
+    "lr": 0.01,
+    "full_batch": false,
+    "dtype": "float64",
+    "target_batching": "global_resample",
+    "weight_tempering": false,
+    "tempering_ess_fraction": 0.5,
+    "tempering_warmup_fraction": 0.4,
+    "tempering_stages": 4,
+    "whiten": "full",
+    "whiten_shrinkage": 0.001,
+    "init": "identity",
+    "epsilon_schedule": "geometric",
+    "epsilon_decay": 0.25,
+    "epsilon_min": 1e-05,
+    "lr_epsilon_scaling": true,
+    "lr_schedule": "cosine",
+    "iterations_by_level": [
+      1000,
+      1000,
+      1000,
+      300,
+      100
+    ]
+  },
+  "rwm": {
+    "block_size": 5,
+    "scale": 0.15,
+    "sweeps": 1
+  },
+  "configurations": [
+    {
+      "name": "L6",
+      "N": [
+        80000,
+        8409,
+        884,
+        100,
+        100,
+        100,
+        100
+      ],
+      "smc_N": 80000
+    }
+  ],
+  "figure5_configuration": "L6",
+  "figure4": {
+    "levels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "seed": 745
+  },
+  "reference": {
+    "mode": "none"
+  },
+  "transport_mh": {
+    "sweeps": 3,
+    "rho": "ess",
+    "shrinkage": 0.001,
+    "ess_rho_min": 0.8,
+    "ess_low": 0.05,
+    "ess_high": 0.5,
+    "ess_sweeps": 30
+  },
+  "mlsmc_kernel": {
+    "sweeps": 3,
+    "rho": "auto",
+    "epsilon": 0.5,
+    "shrinkage": 0.001,
+    "iterations": 1000,
+    "lr": 0.01,
+    "init": "identity",
+    "K": null,
+    "ess_sweeps": 30,
+    "ess_low": 0.05,
+    "ess_high": 0.5
+  },
+  "allocation": {
+    "rule": "N_l ~ h_l^3.25 within a run (Beskos 2017 Sec 3.3 with beta=4: sensor error ~h^2; zeta_h=2.5: sparse 2D solve ~ elements^1.25); N_0 x4 per added level (alpha=1 scaling, for a graded cost axis)",
+    "n0_at_lmax": 80000,
+    "n_min": 100
+  },
+  "problem": "darcy2d",
+  "darcy": {
+    "d": 25,
+    "n0": 4,
+    "sensors": 5,
+    "noise_sd": 0.025,
+    "data_level": 6
+  },
+  "initial_cache": "pool_cache_darcy"
+}

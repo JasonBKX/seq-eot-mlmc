@@ -1,0 +1,150 @@
+{
+  "dimension": 36,
+  "data_seed": 2026,
+  "run_seed": 12345,
+  "repeats": 30,
+  "threads": 1,
+  "methods": [
+    "MLSMC_pCN"
+  ],
+  "solver": "banded",
+  "light": {
+    "iterations": 1000,
+    "batch_size": 1024,
+    "K": 4,
+    "epsilon": 0.05,
+    "lr": 0.01,
+    "full_batch": false,
+    "dtype": "float64",
+    "target_batching": "global_resample",
+    "weight_tempering": false,
+    "tempering_ess_fraction": 0.5,
+    "tempering_warmup_fraction": 0.4,
+    "tempering_stages": 4,
+    "whiten": "full",
+    "whiten_shrinkage": 0.001,
+    "init": "identity",
+    "epsilon_schedule": "geometric",
+    "epsilon_decay": 0.25,
+    "epsilon_min": 1e-05,
+    "lr_epsilon_scaling": true,
+    "lr_schedule": "cosine",
+    "iterations_by_level": [
+      1000,
+      1000,
+      1000,
+      300,
+      100
+    ]
+  },
+  "rwm": {
+    "block_size": 5,
+    "scale": 0.15,
+    "sweeps": 1
+  },
+  "configurations": [
+    {
+      "name": "L0",
+      "N": [
+        100
+      ],
+      "smc_N": 100
+    },
+    {
+      "name": "L1",
+      "N": [
+        312,
+        100
+      ],
+      "smc_N": 312
+    },
+    {
+      "name": "L2",
+      "N": [
+        1250,
+        110,
+        100
+      ],
+      "smc_N": 1250
+    },
+    {
+      "name": "L3",
+      "N": [
+        5000,
+        442,
+        100,
+        100
+      ],
+      "smc_N": 5000
+    },
+    {
+      "name": "L4",
+      "N": [
+        20000,
+        1768,
+        156,
+        100,
+        100
+      ],
+      "smc_N": 20000
+    }
+  ],
+  "figure5_configuration": "L4",
+  "figure4": {
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "seed": 745
+  },
+  "reference": {
+    "mode": "none"
+  },
+  "transport_mh": {
+    "sweeps": 3,
+    "rho": "ess",
+    "shrinkage": 0.001,
+    "ess_rho_min": 0.8,
+    "ess_low": 0.05,
+    "ess_high": 0.5,
+    "ess_sweeps": 30
+  },
+  "mlsmc_kernel": {
+    "sweeps": 3,
+    "rho": "auto",
+    "epsilon": 0.5,
+    "shrinkage": 0.001,
+    "iterations": 1000,
+    "lr": 0.01,
+    "init": "identity",
+    "K": null
+  },
+  "allocation": {
+    "rule": "N_l ~ h_l^3.5 within a run (Beskos 2017 Sec 3.3 with beta=4: sensor error ~h^2; zeta=3: FFT solve ~ N^2 log N per step x N steps); N_0 x4 per added level",
+    "n0_at_lmax": 20000,
+    "n_min": 100
+  },
+  "problem": "ns2d",
+  "initial_cache": "pool_cache_ns",
+  "ns": {
+    "d": 36,
+    "n0": 8,
+    "steps0": 8,
+    "T": 1.0,
+    "obs_times": [
+      0.5,
+      1.0
+    ],
+    "sensors": 4,
+    "nu": 0.01,
+    "sigma": 2.0,
+    "tau": 3.0,
+    "alpha": 2.0,
+    "f_amp": 0.5,
+    "noise_sd": 0.25,
+    "data_level": 5,
+    "scheme": "fd2"
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "schema": "beskos-transport-mh-v1",
+  "signature": "3642d1ba893967484807f2adb4a733a8a59994bc843eb978426c1273cae3ba22",
+  "configuration": "REF",
+  "method": "MLSMC_pCN",
+  "repeat": 8,
+  "seed": 13200,
+  "L": 5,
+  "N": [
+    200000,
+    21030,
+    2210,
+    1000,
+    1000,
+    1000
+  ],
+  "common_initial_pool_size": 200000,
+  "common_initialization_seconds_excluded": 47.40842987498036,
+  "initialization": {
+    "method": "tempered SMC + whitened pCN at level 0",
+    "stages": 9,
+    "sweeps_per_stage": 5,
+    "final_acceptance": 0.39909700000000004,
+    "level0_solves": 9200000,
+    "unique_after_last_resampling": 108365
+  },
+  "estimate": 1.0082275767648758,
+  "contributions": [
+    {
+      "level": 0,
+      "source_level": -1,
+      "h_source": null,
+      "n_correction": 200000,
+      "contribution": 1.04212017948315,
+      "within_particle_variance": 0.05364495748989624
+    },
+    {
+      "level": 1,
+      "source_level": 0,
+      "h_source": 0.125,
+      "n_correction": 200000,
+      "contribution": -0.028201205304667527,
+      "within_particle_variance": null
+    },
+    {
+      "level": 2,
+      "source_level": 1,
+      "h_source": 0.0625,
+      "n_correction": 21030,
+      "contribution": -0.004337702972580797,
+      "within_particle_variance": null
+    },
+    {
+      "level": 3,
+      "source_level": 2,
+      "h_source": 0.03125,
+      "n_correction": 2210,
+      "contribution": -0.0008217066261962875,
+      "within_particle_variance": null
+    },
+    {
+      "level": 4,
+      "source_level": 3,
+      "h_source": 0.015625,
+      "n_correction": 1000,
+      "contribution": -0.0005006072170678907,
+      "within_particle_variance": null
+    },
+    {
+      "level": 5,
+      "source_level": 4,
+      "h_source": 0.0078125,
+      "n_correction": 1000,
+      "contribution": -3.138059776160249e-05,
+      "within_particle_variance": null
+    }
+  ],
+  "sampler_seconds": 92.56040216702968,
+  "estimator_seconds": 3.82115016807802,
+  "total_seconds": 96.38168175000465,
+  "timing_profile_version": 1,
+  "pde_seconds": 92.34733095916454,
+  "pde_reweight_seconds": 45.488871542038396,
+  "pde_mcmc_seconds": 46.85845941712614,
+  "fit_seconds": 0.0017032090108841658,
+  "propagation_seconds": 0.0,
+  "resampling_seconds": 0.004430751025211066,
+  "mcmc_total_seconds": 47.06155379203847,
+  "mcmc_other_seconds": 0.2030943749123253,
+  "sampler_other_seconds": 0.0038428729167208076,
+  "fem_solves_by_level": {
+    "0": 200000,
+    "1": 830900,
+    "2": 27660,
+    "3": 5210,
+    "4": 4000,
+    "5": 1000
+  },
+  "fem_solves_raw": 1068770,
+  "fem_element_work": 203123200,
+  "continuum_forward_evals": 0,
+  "continuum_quadrature_points": 0,
+  "diagnostics": [
+    {
+      "level": 1,
+      "ratio_ess": 524.239197765591,
+      "unique_after_resampling": 8908,
+      "ratio_ess_fraction": 0.002621195988827955,
+      "level_sweeps": 30,
+      "mh_kernel": "pcn",
+      "mh_sweeps": 30,
+      "mh_acceptance_fraction": 0.5169836741163417,
+      "mh_mean_acceptance_probability": 0.5172757830269291,
+      "pcn_rho": 0.7807764064044151,
+      "mutation_epsilon": 0.5,
+      "timing_breakdown": {
+        "sampler_seconds": 39.33369624998886,
+        "estimator_seconds": 0.3552290830411948,
+        "pde_seconds": 39.130252084170934,
+        "pde_reweight_seconds": 10.025041374959983,
+        "pde_mcmc_seconds": 29.10521070921095,
+        "fit_seconds": 0.0010937919723801315,
+        "propagation_seconds": 0.0,
+        "resampling_seconds": 0.0035784170031547546,
+        "mcmc_total_seconds": 29.302761459024623,
+        "mcmc_other_seconds": 0.19755074981367216,
+        "sampler_other_seconds": 0.0012212070287205279
+      }
+    },
+    {
+      "level": 2,
+      "ratio_ess": 15704.296377718892,
+      "unique_after_resampling": 2078,
+      "ratio_ess_fraction": 0.7467568415463097,
+      "level_sweeps": 3,
+      "mh_kernel": "pcn",
+      "mh_sweeps": 3,
+      "mh_acceptance_fraction": 0.5660633484162896,
+      "mh_mean_acceptance_probability": 0.5725833100261172,
+      "pcn_rho": 0.7807764064044151,
+      "mutation_epsilon": 0.5,
+      "timing_breakdown": {
+        "sampler_seconds": 4.185291208035778,
+        "estimator_seconds": 0.038259500986896455,
+        "pde_seconds": 4.181737749080639,
+        "pde_reweight_seconds": 3.19307966704946,
+        "pde_mcmc_seconds": 0.9886580820311792,
+        "fit_seconds": 0.00022116699256002903,
+        "propagation_seconds": 0.0,
+        "resampling_seconds": 0.0005450419848784804,
+        "mcmc_total_seconds": 0.9912028330145404,
+        "mcmc_other_seconds": 0.002544750983361155,
+        "sampler_other_seconds": 0.00024249899433925748
+      }
+    },
+    {
+      "level": 3,
+      "ratio_ess": 2161.910857166711,
+      "unique_after_resampling": 800,
+      "ratio_ess_fraction": 0.9782402068627652,
+      "level_sweeps": 3,
+      "mh_kernel": "pcn",
+      "mh_sweeps": 3,
+      "mh_acceptance_fraction": 0.5663333333333334,
+      "mh_mean_acceptance_probability": 0.566912890735397,
+      "pcn_rho": 0.7807764064044151,
+      "mutation_epsilon": 0.5,
+      "timing_breakdown": {
+        "sampler_seconds": 4.807903125009034,
+        "estimator_seconds": 0.017064667015802115,
+        "pde_seconds": 4.805870582931675,
+        "pde_reweight_seconds": 2.0679036660003476,
+        "pde_mcmc_seconds": 2.7379669169313274,
+        "fit_seconds": 0.00020170805510133505,
+        "propagation_seconds": 0.0,
+        "resampling_seconds": 0.00019737501861527562,
+        "mcmc_total_seconds": 2.739493291999679,
+        "mcmc_other_seconds": 0.0015263750683516264,
+        "sampler_other_seconds": 0.00010708393529057503
+      }
+    },
+    {
+      "level": 4,
+      "ratio_ess": 998.7147880424002,
+      "unique_after_resampling": 629,
+      "ratio_ess_fraction": 0.9987147880424002,
+      "level_sweeps": 3,
+      "mh_kernel": "pcn",
+      "mh_sweeps": 3,
+      "mh_acceptance_fraction": 0.5696666666666667,
+      "mh_mean_acceptance_probability": 0.5625241764024397,
+      "pcn_rho": 0.7807764064044151,
+      "mutation_epsilon": 0.5,
+      "timing_breakdown": {
+        "sampler_seconds": 18.72411600104533,
+        "estimator_seconds": 0.016559542040340602,
+        "pde_seconds": 18.72225075098686,
+        "pde_reweight_seconds": 4.695627042034175,
+        "pde_mcmc_seconds": 14.026623708952684,
+        "fit_seconds": 0.0001865419908426702,
+        "propagation_seconds": 0.0,
+        "resampling_seconds": 0.00010991701856255531,
+        "mcmc_total_seconds": 14.028096207999624,
+        "mcmc_other_seconds": 0.0014724990469403565,
+        "sampler_other_seconds": 9.629200212657452e-05
+      }
+    },
+    {
+      "level": 5,
+      "ratio_ess": 999.9201668235384,
+      "final_mutation_skipped": true,
+      "timing_breakdown": {
+        "sampler_seconds": 24.5519878329942,
+        "estimator_seconds": 3.316602669656277e-05,
+        "pde_seconds": 24.551904916996136,
+        "pde_reweight_seconds": 24.551904916996136,
+        "pde_mcmc_seconds": 0.0,
+        "fit_seconds": 0.0,
+        "propagation_seconds": 0.0,
+        "resampling_seconds": 0.0,
+        "mcmc_total_seconds": 0.0,
+        "mcmc_other_seconds": 0.0,
+        "sampler_other_seconds": 8.291599806398153e-05
+      }
+    }
+  ]
+}

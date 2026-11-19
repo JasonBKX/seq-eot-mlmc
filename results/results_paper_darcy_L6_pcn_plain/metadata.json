@@ -1,0 +1,245 @@
+{
+  "schema": "beskos-transport-mh-v1",
+  "signature": "07293207374607fab22642d67f7797117f36ec143c62ca58206582a2e8980666",
+  "config": {
+    "dimension": 25,
+    "data_seed": 2026,
+    "run_seed": 12345,
+    "y": null,
+    "noise_sd": 0.025,
+    "problem": "darcy2d",
+    "source": {
+      "field_scale": 0.3,
+      "xi_true": 0.3,
+      "noise_rel": 0.01,
+      "noise_weak": 0.2,
+      "start_elements": 8,
+      "weak_separation": 1.5,
+      "weak_noise_free": true,
+      "weak_sensor_x": 0.25
+    },
+    "repeats": 30,
+    "threads": 1,
+    "solver": "banded",
+    "parameter_batch": 128,
+    "observable_quadrature_order": 64,
+    "initial_max_proposals": 20000000,
+    "methods": [
+      "MLSMC_pCN"
+    ],
+    "bootstrap_draws": 500,
+    "light": {
+      "iterations": 1000,
+      "batch_size": 1024,
+      "K": 4,
+      "epsilon": 0.05,
+      "lr": 0.01,
+      "S_init": 0.5,
+      "full_batch": false,
+      "dtype": "float64",
+      "target_batching": "global_resample",
+      "weight_tempering": false,
+      "tempering_ess_fraction": 0.5,
+      "tempering_warmup_fraction": 0.4,
+      "tempering_stages": 4,
+      "whiten": "full",
+      "whiten_shrinkage": 0.001,
+      "init": "identity",
+      "correction": "none",
+      "epsilon_schedule": "geometric",
+      "epsilon_decay": 0.25,
+      "epsilon_min": 1e-05,
+      "epsilon_by_level": null,
+      "lr_epsilon_scaling": true,
+      "lr_schedule": "cosine",
+      "iterations_by_level": [
+        1000,
+        1000,
+        1000,
+        300,
+        100
+      ]
+    },
+    "rwm": {
+      "block_size": 5,
+      "scale": 0.15,
+      "sweeps": 1
+    },
+    "transport_mh": {
+      "sweeps": 3,
+      "rho": "ess",
+      "shrinkage": 0.001,
+      "ess_rho_min": 0.8,
+      "ess_low": 0.05,
+      "ess_high": 0.5,
+      "ess_sweeps": 30
+    },
+    "mlsmc_kernel": {
+      "sweeps": 3,
+      "rho": "auto",
+      "epsilon": 0.5,
+      "shrinkage": 0.001,
+      "iterations": 1000,
+      "lr": 0.01,
+      "init": "identity",
+      "K": null
+    },
+    "reference": {
+      "mode": "none",
+      "orders": [
+        160,
+        240
+      ],
+      "chains": 16,
+      "draws": 2000,
+      "burn_in": 200,
+      "seed": 9123,
+      "samples": 20000,
+      "max_proposals": 40000000
+    },
+    "figure4": {
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "seed": 745,
+      "u": null
+    },
+    "figure5_configuration": "L6",
+    "configurations": [
+      {
+        "name": "L6",
+        "N": [
+          80000,
+          8409,
+          884,
+          100,
+          100,
+          100,
+          100
+        ],
+        "smc_N": 80000
+      }
+    ],
+    "allocation": {
+      "rule": "N_l ~ h_l^3.25 within a run (Beskos 2017 Sec 3.3 with beta=4: sensor error ~h^2; zeta_h=2.5: sparse 2D solve ~ elements^1.25); N_0 x4 per added level (alpha=1 scaling, for a graded cost axis)",
+      "n0_at_lmax": 80000,
+      "n_min": 100
+    },
+    "darcy": {
+      "d": 25,
+      "n0": 4,
+      "sensors": 5,
+      "noise_sd": 0.025,
+      "data_level": 6
+    },
+    "initial_cache": "pool_cache_darcy"
+  },
+  "target": {
+    "dimension": 25,
+    "y": [
+      0.8427674092896092,
+      0.5540858526914519,
+      0.397338242679936,
+      0.1695270149818024,
+      0.09737824224883984,
+      0.8268371898910678,
+      0.7086354902981781,
+      0.49022053064064147,
+      0.2964608724339132,
+      0.09818306722667745,
+      0.9279004588904711,
+      0.7732901263076288,
+      0.5929345986673781,
+      0.3888607465167604,
+      0.19879429646335958,
+      0.9529940096754935,
+      0.8568511109015282,
+      0.7019934740716804,
+      0.5109162008719419,
+      0.2510933011418618,
+      0.9762340197164503,
+      0.9599004541838637,
+      0.7596525611240552,
+      0.5873251402761103,
+      0.34555531514958393
+    ],
+    "noise_sd": 0.025,
+    "problem": "darcy2d",
+    "darcy_settings": {
+      "d": 25,
+      "n0": 4,
+      "sensors": 5,
+      "noise_sd": 0.025,
+      "sigma": 1.0,
+      "tau": 3.0,
+      "alpha": 2.0,
+      "data_level": 6,
+      "dense_max": 100,
+      "phi_grid": 64
+    },
+    "data_level": 6,
+    "observations": "pressure at a 5x5 sensor grid",
+    "observable": "mean permeability over [1/4,3/4]^2",
+    "posterior_reference": "level-L posterior (no continuum model)"
+  },
+  "environment": {
+    "python": "3.11.14",
+    "platform": "macOS-26.7.1-arm64-arm-64bit",
+    "torch": "2.14.0",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "device": "cpu",
+    "threads": 1
+  },
+  "timing": "Warm-cache conditional-on-initial-population benchmark; independent eta0 rejection initialization, reference and Figure4 excluded. Sampling + fixed-phi estimator evaluation included.",
+  "timing_profile": {
+    "version": 1,
+    "pde_seconds": "Complete log-density calls: coordinate transforms, FEM assembly/solve, likelihood; not pure linear-solver time. Excludes observable evaluations.",
+    "pde_reweight_seconds": "Initial SMC log density plus densities used for reweighting or LightSB cached ratios.",
+    "pde_mcmc_seconds": "Proposal log-density calls inside MCMC, including rejected proposals.",
+    "fit_seconds": "LightSB model and optimizer initialization plus all optimizer updates; no PDE calls.",
+    "propagation_seconds": "LightSB uniform parent selection and conditional child sampling.",
+    "resampling_seconds": "SMC/MLSMC weighted ancestor selection and population/log-density copies.",
+    "mcmc_total_seconds": "Inclusive mutation time: OVERLAPS pde_mcmc_seconds. Do not add to the partition.",
+    "mcmc_other_seconds": "mcmc_total_seconds minus pde_mcmc_seconds.",
+    "sampler_other_seconds": "Remaining sampler wall time, including unclassified checks/copies and timer overhead.",
+    "partition": "sampler_seconds = pde_seconds + fit_seconds + propagation_seconds + resampling_seconds + mcmc_other_seconds + sampler_other_seconds (up to timing roundoff).",
+    "per_level": "diagnostics[].timing_breakdown covers each transition. Initial density/observable work precedes those transitions and is in run totals only.",
+    "overhead": "Profiling has overhead; no timing calls are added inside the Adam update loop. Console/file output is outside recorded timers. CPU-only."
+  },
+  "pde_work": "Actual FEM forward counts weighted by number of elements, in common units across L. Continuum observable/reference work logged separately.",
+  "light_importance": {
+    "target_batching": "global_resample",
+    "weight_tempering": false,
+    "tempering_ess_fraction": 0.5,
+    "tempering_warmup_fraction": 0.4,
+    "tempering_stages": 4,
+    "interpretation": "Optional fixed-cloud optimizer warm-up ending at beta=1; NOT SMC tempering. Global minibatches target the full-cloud empirical measure, not a guaranteed posterior. One transport per PDE level; final raw ESS always retained."
+  },
+  "light_whitening": {
+    "whiten": "full",
+    "whiten_shrinkage": 0.001,
+    "init": "identity",
+    "correction": "none",
+    "epsilon_schedule": "geometric",
+    "epsilon_decay": 0.25,
+    "epsilon_min": 1e-05,
+    "epsilon_by_level": null,
+    "lr_epsilon_scaling": true,
+    "epsilon_by_transition": [
+      0.05,
+      0.0125,
+      0.003125,
+      0.00078125,
+      0.0001953125,
+      4.8828125e-05
+    ],
+    "interpretation": "Per-level affine whitening from the unweighted source cloud; LightSB (epsilon, S, r) operates in whitened units; children mapped back to z. init='identity': S=identity_scale(eps), r=(1-S)*anchor. correction='is': children weighted by gamma_l/q_l with q_l the exact LightSB mixture marginal, paired self-normalised correction, then multinomial resampling; extra level-l solves for every child are counted in FEM work."
+  },
+  "estimator": "Same continuum phi at all levels. LightSB unweighted pairs; MLSMC equation (5); SMC final mean."
+}

@@ -1,0 +1,102 @@
+{
+  "dimension": 50,
+  "data_seed": 2026,
+  "run_seed": 12345,
+  "repeats": 3,
+  "threads": 1,
+  "methods": [
+    "LightSB",
+    "MLSMC",
+    "TransportMH",
+    "MLSMC_pCN",
+    "MLSMC_LSB"
+  ],
+  "solver": "dense",
+  "light": {
+    "iterations": 100,
+    "batch_size": 1024,
+    "K": 4,
+    "epsilon": 0.05,
+    "lr": 0.01,
+    "full_batch": false,
+    "dtype": "float64",
+    "target_batching": "global_resample",
+    "weight_tempering": false,
+    "tempering_ess_fraction": 0.5,
+    "tempering_warmup_fraction": 0.4,
+    "tempering_stages": 4,
+    "whiten": "full",
+    "whiten_shrinkage": 0.001,
+    "init": "identity"
+  },
+  "rwm": {
+    "block_size": 5,
+    "scale": 0.15,
+    "sweeps": 1
+  },
+  "configurations": [
+    {
+      "name": "L1",
+      "N": [
+        3000,
+        3000
+      ],
+      "smc_N": 300
+    },
+    {
+      "name": "L2",
+      "N": [
+        3000,
+        3000,
+        3000
+      ],
+      "smc_N": 300
+    },
+    {
+      "name": "L3",
+      "N": [
+        3000,
+        3000,
+        3000,
+        3000
+      ],
+      "smc_N": 3000
+    }
+  ],
+  "figure5_configuration": "L3",
+  "figure4": {
+    "levels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "seed": 745
+  },
+  "reference": {
+    "mode": "mcmc",
+    "chains": 16,
+    "draws": 2000,
+    "burn_in": 200,
+    "seed": 9123
+  },
+  "transport_mh": {
+    "sweeps": 2,
+    "rho": "auto",
+    "shrinkage": 0.001
+  },
+  "mlsmc_kernel": {
+    "sweeps": 3,
+    "rho": "auto",
+    "epsilon": 0.5,
+    "shrinkage": 0.001,
+    "iterations": 100,
+    "lr": 0.01,
+    "init": "identity",
+    "K": null
+  }
+}

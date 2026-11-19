@@ -1,0 +1,211 @@
+{
+  "dimension": 50,
+  "data_seed": 2026,
+  "run_seed": 12345,
+  "repeats": 10,
+  "threads": 1,
+  "methods": [
+    "LightSB",
+    "MLSMC",
+    "MLSMC_pCN",
+    "MLSMC_LSB",
+    "TransportMH"
+  ],
+  "solver": "banded",
+  "light": {
+    "iterations": 1000,
+    "batch_size": 1024,
+    "K": 4,
+    "epsilon": 0.05,
+    "lr": 0.01,
+    "full_batch": false,
+    "dtype": "float64",
+    "target_batching": "global_resample",
+    "weight_tempering": false,
+    "tempering_ess_fraction": 0.5,
+    "tempering_warmup_fraction": 0.4,
+    "tempering_stages": 4,
+    "whiten": "full",
+    "whiten_shrinkage": 0.001,
+    "init": "identity",
+    "epsilon_schedule": "geometric",
+    "epsilon_decay": 0.25,
+    "epsilon_min": 1e-05,
+    "lr_epsilon_scaling": true
+  },
+  "rwm": {
+    "block_size": 5,
+    "scale": 0.15,
+    "sweeps": 1
+  },
+  "configurations": [
+    {
+      "name": "L0",
+      "N": [
+        100
+      ],
+      "smc_N": 100
+    },
+    {
+      "name": "L1",
+      "N": [
+        100,
+        100
+      ],
+      "smc_N": 100
+    },
+    {
+      "name": "L2",
+      "N": [
+        100,
+        100,
+        100
+      ],
+      "smc_N": 100
+    },
+    {
+      "name": "L3",
+      "N": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "smc_N": 100
+    },
+    {
+      "name": "L4",
+      "N": [
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "smc_N": 100
+    },
+    {
+      "name": "L5",
+      "N": [
+        353,
+        125,
+        100,
+        100,
+        100,
+        100
+      ],
+      "smc_N": 353
+    },
+    {
+      "name": "L6",
+      "N": [
+        1471,
+        520,
+        184,
+        100,
+        100,
+        100,
+        100
+      ],
+      "smc_N": 1471
+    },
+    {
+      "name": "L7",
+      "N": [
+        6049,
+        2139,
+        757,
+        268,
+        100,
+        100,
+        100,
+        100
+      ],
+      "smc_N": 6049
+    },
+    {
+      "name": "L8",
+      "N": [
+        24666,
+        8721,
+        3084,
+        1091,
+        386,
+        137,
+        100,
+        100,
+        100
+      ],
+      "smc_N": 24666
+    },
+    {
+      "name": "L9",
+      "N": [
+        100000,
+        35356,
+        12500,
+        4420,
+        1563,
+        553,
+        196,
+        100,
+        100,
+        100
+      ],
+      "smc_N": 100000
+    }
+  ],
+  "figure5_configuration": "L9",
+  "figure4": {
+    "levels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "seed": 745
+  },
+  "reference": {
+    "mode": "is",
+    "seed": 9123,
+    "max_proposals": 1000000000,
+    "is_samples": 200000000,
+    "is_pilot": 5000,
+    "is_informed_dims": 4,
+    "is_df": 5,
+    "is_inflation": 1.2,
+    "is_defensive": 0.05,
+    "is_batch": 65536,
+    "is_batches_for_se": 20
+  },
+  "transport_mh": {
+    "sweeps": 3,
+    "rho": 0.8,
+    "shrinkage": 0.001
+  },
+  "mlsmc_kernel": {
+    "sweeps": 3,
+    "rho": "auto",
+    "epsilon": 0.5,
+    "shrinkage": 0.001,
+    "iterations": 1000,
+    "lr": 0.01,
+    "init": "identity",
+    "K": null
+  },
+  "initial_max_proposals": 2000000000,
+  "noise_sd": 0.05,
+  "allocation": {
+    "rule": "Beskos et al. 2017 Sec 3.3: N_l ~ eps^-2 K_L h_l^((beta+zeta)/2), eps^2 ~ h_L^(2 alpha)",
+    "beta": 2.0,
+    "zeta": 1.0,
+    "alpha": 1.0,
+    "n0_at_lmax": 100000,
+    "n_min": 100
+  }
+}

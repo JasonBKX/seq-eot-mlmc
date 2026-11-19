@@ -1,0 +1,306 @@
+{
+  "schema": "beskos-transport-mh-v1",
+  "signature": "0150d0310cad0535049c60da6e925497962db88830d19b0829d5baa36ec3b71f",
+  "config": {
+    "dimension": 36,
+    "data_seed": 2026,
+    "run_seed": 12345,
+    "y": null,
+    "noise_sd": 0.25,
+    "problem": "ns2d",
+    "source": {
+      "field_scale": 0.3,
+      "xi_true": 0.3,
+      "noise_rel": 0.01,
+      "noise_weak": 0.2,
+      "start_elements": 8,
+      "weak_separation": 1.5,
+      "weak_noise_free": true,
+      "weak_sensor_x": 0.25
+    },
+    "repeats": 30,
+    "threads": 1,
+    "solver": "banded",
+    "parameter_batch": 128,
+    "observable_quadrature_order": 64,
+    "initial_max_proposals": 20000000,
+    "methods": [
+      "LightSB",
+      "TransportMH",
+      "MLSMC_pCN"
+    ],
+    "bootstrap_draws": 500,
+    "light": {
+      "iterations": 1000,
+      "batch_size": 1024,
+      "K": 4,
+      "epsilon": 0.05,
+      "lr": 0.01,
+      "S_init": 0.5,
+      "full_batch": false,
+      "dtype": "float64",
+      "target_batching": "global_resample",
+      "weight_tempering": false,
+      "tempering_ess_fraction": 0.5,
+      "tempering_warmup_fraction": 0.4,
+      "tempering_stages": 4,
+      "whiten": "full",
+      "whiten_shrinkage": 0.001,
+      "init": "identity",
+      "correction": "none",
+      "epsilon_schedule": "geometric",
+      "epsilon_decay": 0.25,
+      "epsilon_min": 1e-05,
+      "epsilon_by_level": null,
+      "lr_epsilon_scaling": true,
+      "lr_schedule": "cosine",
+      "iterations_by_level": [
+        1000,
+        1000,
+        1000,
+        300,
+        100
+      ]
+    },
+    "rwm": {
+      "block_size": 5,
+      "scale": 0.15,
+      "sweeps": 1
+    },
+    "transport_mh": {
+      "sweeps": 3,
+      "rho": "ess",
+      "shrinkage": 0.001,
+      "ess_rho_min": 0.8,
+      "ess_low": 0.05,
+      "ess_high": 0.5,
+      "ess_sweeps": 30
+    },
+    "mlsmc_kernel": {
+      "sweeps": 3,
+      "rho": "auto",
+      "epsilon": 0.5,
+      "shrinkage": 0.001,
+      "iterations": 1000,
+      "lr": 0.01,
+      "init": "identity",
+      "K": null,
+      "ess_sweeps": 30,
+      "ess_low": 0.05,
+      "ess_high": 0.5
+    },
+    "reference": {
+      "mode": "none",
+      "orders": [
+        160,
+        240
+      ],
+      "chains": 16,
+      "draws": 2000,
+      "burn_in": 200,
+      "seed": 9123,
+      "samples": 20000,
+      "max_proposals": 40000000
+    },
+    "figure4": {
+      "levels": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "seed": 745,
+      "u": null
+    },
+    "figure5_configuration": "L4",
+    "configurations": [
+      {
+        "name": "L0",
+        "N": [
+          100
+        ],
+        "smc_N": 100
+      },
+      {
+        "name": "L1",
+        "N": [
+          312,
+          100
+        ],
+        "smc_N": 312
+      },
+      {
+        "name": "L2",
+        "N": [
+          1250,
+          110,
+          100
+        ],
+        "smc_N": 1250
+      },
+      {
+        "name": "L3",
+        "N": [
+          5000,
+          442,
+          100,
+          100
+        ],
+        "smc_N": 5000
+      },
+      {
+        "name": "L4",
+        "N": [
+          20000,
+          1768,
+          156,
+          100,
+          100
+        ],
+        "smc_N": 20000
+      }
+    ],
+    "allocation": {
+      "rule": "N_l ~ h_l^3.5 within a run (Beskos 2017 Sec 3.3 with beta=4: sensor error ~h^2; zeta=3: FFT solve ~ N^2 log N per step x N steps); N_0 x4 per added level",
+      "n0_at_lmax": 20000,
+      "n_min": 100
+    },
+    "initial_cache": "pool_cache_ns",
+    "ns": {
+      "d": 36,
+      "n0": 8,
+      "steps0": 8,
+      "T": 1.0,
+      "obs_times": [
+        0.5,
+        1.0
+      ],
+      "sensors": 4,
+      "nu": 0.01,
+      "sigma": 2.0,
+      "tau": 3.0,
+      "alpha": 2.0,
+      "f_amp": 0.5,
+      "noise_sd": 0.25,
+      "data_level": 5,
+      "scheme": "fd2"
+    }
+  },
+  "target": {
+    "dimension": 36,
+    "y": [
+      -2.224367727850752,
+      0.5080589684430885,
+      0.9561376710317381,
+      -1.7646482196715831,
+      -1.1304464301905168,
+      0.6417424954390153,
+      1.7480674321959846,
+      -0.20898869796715763,
+      -1.0720098493895134,
+      1.9730024706253941,
+      3.7196361927496504,
+      -1.2092656125320624,
+      -1.635123992556484,
+      2.0982775802731624,
+      2.2994548640771457,
+      -1.7827826723082594,
+      -1.7440300211375463,
+      1.0637222683529652,
+      0.4335180144868112,
+      -1.6771806543308854,
+      -0.8579264364347524,
+      0.728793509358411,
+      1.7949513449087466,
+      -0.5452860270845462,
+      -1.5183064664039871,
+      0.886362509389836,
+      2.432526318171539,
+      -0.87096693648814,
+      -2.361984407396073,
+      1.5019815670039445,
+      1.4739217031750484,
+      -1.6712715735273531
+    ],
+    "noise_sd": 0.25,
+    "problem": "ns2d",
+    "ns_settings": {
+      "d": 36,
+      "n0": 8,
+      "steps0": 8,
+      "T": 1.0,
+      "obs_times": [
+        0.5,
+        1.0
+      ],
+      "sensors": 4,
+      "nu": 0.01,
+      "sigma": 2.0,
+      "tau": 3.0,
+      "alpha": 2.0,
+      "f_amp": 0.5,
+      "noise_sd": 0.25,
+      "data_level": 5,
+      "phi_grid": 64,
+      "batch": 64,
+      "scheme": "fd2"
+    },
+    "data_level": 5,
+    "observations": "vorticity at a 4x4 grid at times [0.5, 1.0]",
+    "observable": "mean initial vorticity over [0,1/2]^2",
+    "posterior_reference": "level-L posterior (no continuum model)"
+  },
+  "environment": {
+    "python": "3.11.14",
+    "platform": "macOS-26.7.1-arm64-arm-64bit",
+    "torch": "2.14.0",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "device": "cpu",
+    "threads": 1
+  },
+  "timing": "Warm-cache conditional-on-initial-population benchmark; independent eta0 rejection initialization, reference and Figure4 excluded. Sampling + fixed-phi estimator evaluation included.",
+  "timing_profile": {
+    "version": 1,
+    "pde_seconds": "Complete log-density calls: coordinate transforms, FEM assembly/solve, likelihood; not pure linear-solver time. Excludes observable evaluations.",
+    "pde_reweight_seconds": "Initial SMC log density plus densities used for reweighting or LightSB cached ratios.",
+    "pde_mcmc_seconds": "Proposal log-density calls inside MCMC, including rejected proposals.",
+    "fit_seconds": "LightSB model and optimizer initialization plus all optimizer updates; no PDE calls.",
+    "propagation_seconds": "LightSB uniform parent selection and conditional child sampling.",
+    "resampling_seconds": "SMC/MLSMC weighted ancestor selection and population/log-density copies.",
+    "mcmc_total_seconds": "Inclusive mutation time: OVERLAPS pde_mcmc_seconds. Do not add to the partition.",
+    "mcmc_other_seconds": "mcmc_total_seconds minus pde_mcmc_seconds.",
+    "sampler_other_seconds": "Remaining sampler wall time, including unclassified checks/copies and timer overhead.",
+    "partition": "sampler_seconds = pde_seconds + fit_seconds + propagation_seconds + resampling_seconds + mcmc_other_seconds + sampler_other_seconds (up to timing roundoff).",
+    "per_level": "diagnostics[].timing_breakdown covers each transition. Initial density/observable work precedes those transitions and is in run totals only.",
+    "overhead": "Profiling has overhead; no timing calls are added inside the Adam update loop. Console/file output is outside recorded timers. CPU-only."
+  },
+  "pde_work": "Actual FEM forward counts weighted by number of elements, in common units across L. Continuum observable/reference work logged separately.",
+  "light_importance": {
+    "target_batching": "global_resample",
+    "weight_tempering": false,
+    "tempering_ess_fraction": 0.5,
+    "tempering_warmup_fraction": 0.4,
+    "tempering_stages": 4,
+    "interpretation": "Optional fixed-cloud optimizer warm-up ending at beta=1; NOT SMC tempering. Global minibatches target the full-cloud empirical measure, not a guaranteed posterior. One transport per PDE level; final raw ESS always retained."
+  },
+  "light_whitening": {
+    "whiten": "full",
+    "whiten_shrinkage": 0.001,
+    "init": "identity",
+    "correction": "none",
+    "epsilon_schedule": "geometric",
+    "epsilon_decay": 0.25,
+    "epsilon_min": 1e-05,
+    "epsilon_by_level": null,
+    "lr_epsilon_scaling": true,
+    "epsilon_by_transition": [
+      0.05,
+      0.0125,
+      0.003125,
+      0.00078125
+    ],
+    "interpretation": "Per-level affine whitening from the unweighted source cloud; LightSB (epsilon, S, r) operates in whitened units; children mapped back to z. init='identity': S=identity_scale(eps), r=(1-S)*anchor. correction='is': children weighted by gamma_l/q_l with q_l the exact LightSB mixture marginal, paired self-normalised correction, then multinomial resampling; extra level-l solves for every child are counted in FEM work."
+  },
+  "estimator": "Same continuum phi at all levels. LightSB unweighted pairs; MLSMC equation (5); SMC final mean."
+}
